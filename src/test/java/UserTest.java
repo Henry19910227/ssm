@@ -10,11 +10,19 @@ import java.io.InputStream;
 
 public class UserTest {
     @Test
-    public void TestInsert() throws IOException {
+    public void TestInsert() {
         SqlUtil sql = new SqlUtil("mybatis-config.xml");
         UserMapper user = sql.GetUserMapper();
         int userId = user.insertUser();
         System.out.println(userId);
+        sql.close();
+    }
+
+    @Test
+    public void TestUpdate() {
+        SqlUtil sql = new SqlUtil("mybatis-config.xml");
+        UserMapper user = sql.GetUserMapper();
+        user.updateUser();
         sql.close();
     }
 }
