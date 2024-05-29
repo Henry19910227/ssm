@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.henry.model.UserMapper">
+    <insert id="insertUser">
+        INSERT INTO ssm.t_user VALUES (NULL, 'admin12121', '123456', 23, 'm', 'admin@gmail.com');
+    </insert>
+</mapper>
