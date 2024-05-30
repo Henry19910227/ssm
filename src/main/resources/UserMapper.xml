@@ -9,6 +9,12 @@
     <select id="login" parameterType="com.henry.model.User" resultType="com.henry.model.User">
         SELECT * FROM ssm.t_user WHERE username = #{arg0} AND password = #{arg1}
     </select>
+    <select id="getUsersByUsername" parameterType="string" resultType="com.henry.model.User">
+        SELECT * FROM ssm.t_user WHERE username LIKE CONCAT('%', #{username}, '%')
+    </select>
+    <select id="getUsersByEmail" parameterType="string" resultType="com.henry.model.User">
+        SELECT * FROM ssm.t_user WHERE email LIKE '%${email}%'
+    </select>
     <insert id="insertUser" parameterType="com.henry.model.User">
         INSERT INTO ssm.t_user (username, password, age, gender, email)
         VALUES (#{username}, #{password}, #{age}, #{gender}, #{email});

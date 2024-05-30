@@ -3,6 +3,8 @@ import com.henry.model.UserMapper;
 import com.henry.utils.SqlUtil;
 import org.junit.Test;
 
+import java.util.List;
+
 public class UserTest {
     @Test
     public void TestSelect() {
@@ -50,6 +52,30 @@ public class UserTest {
     public void TestDelete() {
         SqlUtil sql = new SqlUtil("mybatis-config.xml");
         sql.GetUserMapper().deleteUser(14);
+        sql.close();
+    }
+
+    @Test
+    public void TestGetUsersByAge() {
+        SqlUtil sql = new SqlUtil("mybatis-config.xml");
+        List<User> users = sql.GetUserMapper().getUsersByAge(15);
+        System.out.println(users);
+        sql.close();
+    }
+
+    @Test
+    public void TestGetUsersByUsername() {
+        SqlUtil sql = new SqlUtil("mybatis-config.xml");
+        List<User> users = sql.GetUserMapper().getUsersByUsername("use");
+        System.out.println(users);
+        sql.close();
+    }
+
+    @Test
+    public void TestGetUsersByEmail() {
+        SqlUtil sql = new SqlUtil("mybatis-config.xml");
+        List<User> users = sql.GetUserMapper().getUsersByEmail("tes");
+        System.out.println(users);
         sql.close();
     }
 }
