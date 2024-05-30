@@ -1,7 +1,10 @@
 package com.henry.model;
 
 public interface UserMapper {
-    int insertUser();
+    User selectUser(int id);
+    int insertUser(User user);
 
-    void updateUser();
+    void updateUser(User user);
+
+    void deleteUser(int id);
 }

@@ -3,10 +3,23 @@
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.henry.model.UserMapper">
-    <insert id="insertUser">
-        INSERT INTO ssm.t_user VALUES (NULL, 'admin12121', '123456', 23, 'm', 'admin@gmail.com');
+    <select id="selectUser" parameterType="int" resultType="com.henry.model.User">
+        SELECT * FROM ssm.t_user WHERE id = #{id}
+    </select>
+    <insert id="insertUser" parameterType="com.henry.model.User">
+        INSERT INTO ssm.t_user (username, password, age, gender, email)
+        VALUES (#{username}, #{password}, #{age}, #{gender}, #{email});
     </insert>
-    <update id="updateUser">
-        UPDATE ssm.t_user SET username = 'hh', password = 'a123456' WHERE id = 1
+    <update id="updateUser" parameterType="com.henry.model.User">
+        UPDATE ssm.t_user SET
+              username = #{username},
+              password = #{password},
+              age = #{age},
+              gender = #{gender},
+              email = #{email}
+        WHERE id = #{id}
     </update>
+    <delete id="deleteUser" parameterType="int">
+        DELETE FROM ssm.t_user WHERE id = #{id}
+    </delete>
 </mapper>

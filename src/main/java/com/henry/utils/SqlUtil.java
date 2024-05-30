@@ -12,7 +12,7 @@ public class SqlUtil {
     private SqlSession sqlSession;
     public SqlUtil(String xml) {
         try {
-            InputStream stream = Resources.getResourceAsStream("mybatis-config.xml");
+            InputStream stream = Resources.getResourceAsStream(xml);
             SqlSessionFactoryBuilder builder = new SqlSessionFactoryBuilder();
             sqlSession = builder.build(stream).openSession(true); //autocommit = true
         } catch (IOException e) {
