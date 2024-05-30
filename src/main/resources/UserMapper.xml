@@ -6,6 +6,9 @@
     <select id="selectUser" parameterType="int" resultType="com.henry.model.User">
         SELECT * FROM ssm.t_user WHERE id = #{id}
     </select>
+    <select id="login" parameterType="com.henry.model.User" resultType="com.henry.model.User">
+        SELECT * FROM ssm.t_user WHERE username = #{arg0} AND password = #{arg1}
+    </select>
     <insert id="insertUser" parameterType="com.henry.model.User">
         INSERT INTO ssm.t_user (username, password, age, gender, email)
         VALUES (#{username}, #{password}, #{age}, #{gender}, #{email});
