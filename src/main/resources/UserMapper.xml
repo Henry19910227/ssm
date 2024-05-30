@@ -15,7 +15,7 @@
     <select id="getUsersByEmail" parameterType="string" resultType="com.henry.model.User">
         SELECT * FROM ssm.t_user WHERE email LIKE '%${email}%'
     </select>
-    <insert id="insertUser" parameterType="com.henry.model.User">
+    <insert id="insertUser" parameterType="com.henry.model.User" useGeneratedKeys="true" keyProperty="id">
         INSERT INTO ssm.t_user (username, password, age, gender, email)
         VALUES (#{username}, #{password}, #{age}, #{gender}, #{email});
     </insert>

@@ -30,14 +30,14 @@ public class UserTest {
     @Test
     public void TestInsert() {
         SqlUtil sql = new SqlUtil("mybatis-config.xml");
-        User userParam = new User();
-        userParam.setUsername("user1");
-        userParam.setAge(15);
-        userParam.setGender("f");
-        userParam.setPassword("s1234");
-        userParam.setEmail("user1@gmail.com");
-        int userId = sql.GetUserMapper().insertUser(userParam);
-        System.out.println(userId);
+        User user = new User();
+        user.setUsername("user12");
+        user.setAge(15);
+        user.setGender("f");
+        user.setPassword("s1234");
+        user.setEmail("user1@gmail.com");
+        sql.GetUserMapper().insertUser(user);
+        System.out.println(user);
         sql.close();
     }
 
