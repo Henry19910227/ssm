@@ -5,8 +5,15 @@
 <mapper namespace="com.henry.model.CourseMapper">
 
 
+    <!--- insertUser api -->
+    <insert id="insertCourse" parameterType="com.henry.model.Course" useGeneratedKeys="true" keyProperty="id">
+        INSERT INTO ssm.courses (user_id, name, intro, create_at, update_at)
+        VALUES (#{userID}, #{name}, #{intro}, #{createAt}, #{updateAt});
+    </insert>
+
+
     <!--- courseResultMap -->
-    <resultMap id="courseResultMap" type="com.henry.model.Course">
+    <resultMap id="getCourseByIDResult" type="com.henry.model.Course">
         <id property="id" column="id" />
         <result property="userID" column="user_id"/>
         <result property="name" column="name"/>
@@ -14,11 +21,11 @@
         <result property="createAt" column="create_at"/>
         <result property="updateAt" column="update_at"/>
     </resultMap>
-
-    <!--- insertUser api -->
-    <insert id="insertCourse" parameterType="com.henry.model.Course" useGeneratedKeys="true" keyProperty="id">
-        INSERT INTO ssm.courses (user_id, name, intro, create_at, update_at)
-        VALUES (#{userID}, #{name}, #{intro}, #{createAt}, #{updateAt});
-    </insert>
+    <select id="getCourseByID" parameterType="int" resultType="com.henry.model.Course" resultMap="getCourseByIDResult">
+        SELECT *
+        FROM ssm.courses AS c
+            LEFT JOIN ssm.users AS u ON c.user_id = u.id
+        WHERE id = #{id}
+    </select>
 
 </mapper>
