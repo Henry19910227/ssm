@@ -2,19 +2,17 @@ package com.henry.model;
 
 public class User {
     private Integer id;
-    private String username;
-    private String password;
-    private Integer age;
-    private String gender;
     private String email;
+    private String nickname;
+    private String createAt;
+    private String updateAt;
 
-    public User(Integer id, String username, String password, Integer age, String gender, String email) {
+    public User(Integer id, String email, String nickname, String createAt, String updateAt) {
         this.id = id;
-        this.username = username;
-        this.password = password;
-        this.age = age;
-        this.gender = gender;
         this.email = email;
+        this.nickname = nickname;
+        this.createAt = createAt;
+        this.updateAt = updateAt;
     }
 
     public User() {
@@ -24,59 +22,46 @@ public class User {
         return id;
     }
 
-    public String getUsername() {
-        return username;
-    }
-
-    public String getPassword() {
-        return password;
-    }
-
-    public Integer getAge() {
-        return age;
-    }
-
-    public String getGender() {
-        return gender;
-    }
-
     public String getEmail() {
         return email;
+    }
+    public String getNickname() {
+        return nickname;
+    }
+    public String getCreateAt() {
+        return createAt;
+    }
+    public String getUpdateAt() {
+        return updateAt;
     }
 
     public void setId(Integer id) {
         this.id = id;
     }
 
-    public void setUsername(String username) {
-        this.username = username;
-    }
-
-    public void setPassword(String password) {
-        this.password = password;
-    }
-
-    public void setAge(Integer age) {
-        this.age = age;
-    }
-
-    public void setGender(String gender) {
-        this.gender = gender;
-    }
-
     public void setEmail(String email) {
         this.email = email;
+    }
+
+    public void setNickname(String nickname) {
+        this.nickname = nickname;
+    }
+
+    public void setCreateAt(String createAt) {
+        this.createAt = createAt;
+    }
+    public void setUpdateAt(String updateAt) {
+        this.updateAt = updateAt;
     }
 
     @Override
     public String toString() {
         return "User{" +
                 "id=" + id +
-                ", username='" + username + '\'' +
-                ", password='" + password + '\'' +
-                ", age=" + age +
-                ", gender='" + gender + '\'' +
                 ", email='" + email + '\'' +
+                ", nickname='" + nickname + '\'' +
+                ", createAt='" + createAt + '\'' +
+                ", updateAt='" + updateAt + '\'' +
                 '}';
     }
 }

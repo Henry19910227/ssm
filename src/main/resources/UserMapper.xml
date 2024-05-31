@@ -3,32 +3,52 @@
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.henry.model.UserMapper">
-    <select id="selectUser" parameterType="int" resultType="com.henry.model.User">
-        SELECT * FROM ssm.t_user WHERE id = #{id}
+
+
+    <!--- getUserByID api -->
+    <resultMap id="userResultMap" type="com.henry.model.User">
+        <id property="id" column="id" />
+        <result property="email" column="email"/>
+        <result property="nickname" column="nickname"/>
+        <result property="createAt" column="create_at"/>
+        <result property="updateAt" column="update_at"/>
+    </resultMap>
+    <select id="getUserByID" parameterType="int" resultType="com.henry.model.User" resultMap="userResultMap">
+        SELECT * FROM ssm.users WHERE id = #{id}
     </select>
-    <select id="login" parameterType="com.henry.model.User" resultType="com.henry.model.User">
-        SELECT * FROM ssm.t_user WHERE username = #{arg0} AND password = #{arg1}
-    </select>
+
+
+    <!--- getUsersByUsername api -->
     <select id="getUsersByUsername" parameterType="string" resultType="com.henry.model.User">
-        SELECT * FROM ssm.t_user WHERE username LIKE CONCAT('%', #{username}, '%')
+        SELECT * FROM ssm.user WHERE username LIKE CONCAT('%', #{username}, '%')
     </select>
+
+
+    <!--- getUsersByEmail api -->
     <select id="getUsersByEmail" parameterType="string" resultType="com.henry.model.User">
-        SELECT * FROM ssm.t_user WHERE email LIKE '%${email}%'
+        SELECT * FROM ssm.user WHERE email LIKE '%${email}%'
     </select>
+
+
+    <!--- insertUser api -->
     <insert id="insertUser" parameterType="com.henry.model.User" useGeneratedKeys="true" keyProperty="id">
-        INSERT INTO ssm.t_user (username, password, age, gender, email)
-        VALUES (#{username}, #{password}, #{age}, #{gender}, #{email});
+        INSERT INTO ssm.users (email, nickname, create_at, update_at)
+        VALUES (#{email}, #{nickname}, #{createAt}, #{updateAt});
     </insert>
+
+
+    <!--- updateUser api -->
     <update id="updateUser" parameterType="com.henry.model.User">
-        UPDATE ssm.t_user SET
-              username = #{username},
-              password = #{password},
-              age = #{age},
-              gender = #{gender},
-              email = #{email}
+        UPDATE ssm.users SET
+              email = #{email},
+              nickname = #{nickname},
+              update_at = #{updateAt}
         WHERE id = #{id}
     </update>
+
+
+    <!--- deleteUser api -->
     <delete id="deleteUser" parameterType="int">
-        DELETE FROM ssm.t_user WHERE id = #{id}
+        DELETE FROM ssm.user WHERE id = #{id}
     </delete>
 </mapper>
