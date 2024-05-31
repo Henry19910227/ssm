@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.henry.model.CourseMapper">
+
+
+    <!--- courseResultMap -->
+    <resultMap id="courseResultMap" type="com.henry.model.Course">
+        <id property="id" column="id" />
+        <result property="userID" column="user_id"/>
+        <result property="name" column="name"/>
+        <result property="intro" column="intro"/>
+        <result property="createAt" column="create_at"/>
+        <result property="updateAt" column="update_at"/>
+    </resultMap>
+
+    <!--- insertUser api -->
+    <insert id="insertCourse" parameterType="com.henry.model.Course" useGeneratedKeys="true" keyProperty="id">
+        INSERT INTO ssm.courses (user_id, name, intro, create_at, update_at)
+        VALUES (#{userID}, #{name}, #{intro}, #{createAt}, #{updateAt});
+    </insert>
+
+</mapper>
