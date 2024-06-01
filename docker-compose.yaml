@@ -1,0 +1,26 @@
+version: "2.4"
+services:
+  test-mysql:
+    image: mysql:8.0
+    container_name: ssm-test-mysql
+    volumes:
+      - "./volumes/mysql:/docker-entrypoint-initdb.d"
+    ports:
+      - "3306:3306"
+    networks:
+      - ssm-network
+    environment:
+      - MYSQL_DATABASE=ssm
+      - MYSQL_ROOT_PASSWORD=aaaa8027
+      - MYSQL_USER=henry
+      - MYSQL_PASSWORD=Henry747
+  redis:
+    image: redis:7.0.1
+    ports:
+      - "6379:6379"
+    networks:
+      - ssm-network
+    container_name: ssm-redis
+networks:
+  ssm-network:
+    driver: bridge
