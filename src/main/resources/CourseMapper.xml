@@ -13,19 +13,35 @@
 
 
     <!--- courseResultMap -->
-    <resultMap id="getCourseByIDResult" type="com.henry.model.Course">
+    <resultMap id="getCourseByIDResult" type="com.henry.model.Course2">
         <id property="id" column="id" />
-        <result property="userID" column="user_id"/>
         <result property="name" column="name"/>
         <result property="intro" column="intro"/>
         <result property="createAt" column="create_at"/>
         <result property="updateAt" column="update_at"/>
+        <association property="user" javaType="com.henry.model.User">
+            <id property="id" column="user_id" />
+            <result property="email" column="user_email"/>
+            <result property="nickname" column="user_nickname"/>
+            <result property="createAt" column="user_create_at"/>
+            <result property="updateAt" column="user_update_at"/>
+        </association>
     </resultMap>
-    <select id="getCourseByID" parameterType="int" resultType="com.henry.model.Course" resultMap="getCourseByIDResult">
-        SELECT *
+    <select id="getCourse2ByID" parameterType="int" resultType="com.henry.model.Course2" resultMap="getCourseByIDResult">
+        SELECT
+            c.id,
+            c.name,
+            c.intro,
+            c.create_at,
+            c.update_at,
+            u.id as user_id,
+            u.email as user_email,
+            u.nickname as user_nickname,
+            u.create_at as user_create_at,
+            u.update_at as user_update_at
         FROM ssm.courses AS c
             LEFT JOIN ssm.users AS u ON c.user_id = u.id
-        WHERE id = #{id}
+        WHERE c.id = #{id}
     </select>
 
 </mapper>

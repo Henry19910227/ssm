@@ -1,4 +1,5 @@
 import com.henry.model.Course;
+import com.henry.model.Course2;
 import com.henry.model.User;
 import com.henry.utils.DateUtil;
 import com.henry.utils.SqlUtil;
@@ -16,6 +17,14 @@ public class CourseTest {
         course.setUpdateAt(DateUtil.currentTime());
         sql.GetCourseMapper().insertCourse(course);
         System.out.println(course);
+        sql.close();
+    }
+
+    @Test
+    public void TestGetCourse2ByID() {
+        SqlUtil sql = new SqlUtil("mybatis-config.xml");
+        Course2 course = sql.GetCourseMapper().getCourse2ByID(1);
+        System.out.println(course.toString());
         sql.close();
     }
 }

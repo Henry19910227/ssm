@@ -66,4 +66,16 @@ public class Course2 {
     public void setUser(User user) {
         this.user = user;
     }
+
+    @Override
+    public String toString() {
+        return "Course2{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", intro='" + intro + '\'' +
+                ", createAt='" + createAt + '\'' +
+                ", updateAt='" + updateAt + '\'' +
+                ", user=" + user +
+                '}';
+    }
 }
