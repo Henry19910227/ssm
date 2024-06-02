@@ -1,4 +1,4 @@
-CREATE TABLE `courses` (
+CREATE TABLE IF NOT EXISTS courses (
        `id` int unsigned NOT NULL AUTO_INCREMENT COMMENT '課表 id',
        `user_id` int unsigned DEFAULT NULL COMMENT '用戶 id',
        `name` varchar(20) NOT NULL DEFAULT '' COMMENT '課表名稱',
@@ -8,4 +8,4 @@ CREATE TABLE `courses` (
        PRIMARY KEY (`id`),
        KEY `fk_courses_user_id_to_users_id` (`user_id`),
        CONSTRAINT `fk_courses_user_id_to_users_id` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`) ON DELETE SET NULL
-) ENGINE=InnoDB AUTO_INCREMENT=0 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci
+) ENGINE=InnoDB CHARSET=utf8mb4 AUTO_INCREMENT = 1;

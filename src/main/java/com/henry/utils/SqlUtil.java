@@ -2,6 +2,7 @@ package com.henry.utils;
 
 import com.henry.model.CourseMapper;
 import com.henry.model.UserMapper;
+import com.henry.model.PlanMapper;
 import org.apache.ibatis.io.Resources;
 import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactoryBuilder;
@@ -27,6 +28,10 @@ public class SqlUtil {
 
     public CourseMapper GetCourseMapper() {
         return sqlSession.getMapper(CourseMapper.class);
+    }
+
+    public PlanMapper planMapper() {
+        return sqlSession.getMapper(PlanMapper.class);
     }
 
     public void close() {

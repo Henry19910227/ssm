@@ -18,5 +18,6 @@
     <mappers>
         <mapper resource="UserMapper.xml" />
         <mapper resource="CourseMapper.xml" />
+        <mapper resource="PlanMapper.xml" />
     </mappers>
 </configuration>

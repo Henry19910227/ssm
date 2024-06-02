@@ -23,8 +23,8 @@ public class UserTest {
     public void TestInsertUser() {
         SqlUtil sql = new SqlUtil("mybatis-config.xml");
         User user = new User();
-        user.setEmail("user2@gmail.com");
-        user.setNickname("user2");
+        user.setEmail("user1@gmail.com");
+        user.setNickname("user1");
         user.setCreateAt(DateUtil.currentTime());
         user.setUpdateAt(DateUtil.currentTime());
         sql.GetUserMapper().insertUser(user);

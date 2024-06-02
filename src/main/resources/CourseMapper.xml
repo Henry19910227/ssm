@@ -5,15 +5,15 @@
 <mapper namespace="com.henry.model.CourseMapper">
 
 
-    <!--- insertUser api -->
+    <!--- insertCourse api -->
     <insert id="insertCourse" parameterType="com.henry.model.Course" useGeneratedKeys="true" keyProperty="id">
         INSERT INTO ssm.courses (user_id, name, intro, create_at, update_at)
         VALUES (#{userID}, #{name}, #{intro}, #{createAt}, #{updateAt});
     </insert>
 
 
-    <!--- courseResultMap -->
-    <resultMap id="getCourseByIDResult" type="com.henry.model.Course2">
+    <!--- getCourse2ByID -->
+    <resultMap id="getCourse2ByIDResult" type="com.henry.model.Course2">
         <id property="id" column="id" />
         <result property="name" column="name"/>
         <result property="intro" column="intro"/>
@@ -27,7 +27,7 @@
             <result property="updateAt" column="user_update_at"/>
         </association>
     </resultMap>
-    <select id="getCourse2ByID" parameterType="int" resultType="com.henry.model.Course2" resultMap="getCourseByIDResult">
+    <select id="getCourse2ByID" parameterType="int" resultType="com.henry.model.Course2" resultMap="getCourse2ByIDResult">
         SELECT
             c.id,
             c.name,
@@ -41,6 +41,37 @@
             u.update_at as user_update_at
         FROM ssm.courses AS c
             LEFT JOIN ssm.users AS u ON c.user_id = u.id
+        WHERE c.id = #{id}
+    </select>
+
+
+    <!--- getCourse3ByID -->
+    <resultMap id="getCourse3ByIDResult" type="com.henry.model.Course3">
+        <id property="id" column="id" />
+        <result property="name" column="name"/>
+        <result property="intro" column="intro"/>
+        <result property="createAt" column="create_at"/>
+        <result property="updateAt" column="update_at"/>
+        <collection property="plans" ofType="com.henry.model.Plan">
+            <id property="id" column="plan_id" />
+            <result property="name" column="plan_name"/>
+            <result property="createAt" column="plan_create_at"/>
+            <result property="updateAt" column="plan_update_at"/>
+        </collection>
+    </resultMap>
+    <select id="getCourse3ByID" parameterType="int" resultType="com.henry.model.Course3" resultMap="getCourse3ByIDResult">
+        SELECT
+            c.id,
+            c.name,
+            c.intro,
+            c.create_at,
+            c.update_at,
+            p.id as plan_id,
+            p.name as plan_name,
+            p.create_at as plan_create_at,
+            p.update_at as plan_update_at
+        FROM ssm.courses AS c
+                 LEFT JOIN ssm.plans AS p ON p.course_id = c.id
         WHERE c.id = #{id}
     </select>
 

@@ -1,4 +1,4 @@
-CREATE TABLE `users` (
+CREATE TABLE IF NOT EXISTS users (
      `id` int unsigned NOT NULL AUTO_INCREMENT COMMENT '用戶id',
      `email` varchar(255) NOT NULL DEFAULT '' COMMENT '信箱',
      `nickname` varchar(20) NOT NULL DEFAULT '' COMMENT '暱稱',
@@ -7,4 +7,4 @@ CREATE TABLE `users` (
      PRIMARY KEY (`id`),
      KEY `index_nickname` (`nickname`),
      KEY `index_email` (`email`)
-) ENGINE=InnoDB AUTO_INCREMENT=0 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci
+) ENGINE=InnoDB CHARSET=utf8mb4 AUTO_INCREMENT = 1;
