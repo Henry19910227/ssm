@@ -75,4 +75,25 @@
         WHERE c.id = #{id}
     </select>
 
+
+
+    <resultMap id="getCourse3ByIDTwoStepMap" type="com.henry.model.Course3">
+        <id property="id" column="id" />
+        <result property="name" column="name"/>
+        <result property="intro" column="intro"/>
+        <result property="createAt" column="create_at"/>
+        <result property="updateAt" column="update_at"/>
+        <collection property="plans" select="com.henry.model.PlanMapper.getPlansByCourseID" column="id"/>
+    </resultMap>
+    <select id="getCourse3ByIDTwoStep" parameterType="int" resultType="com.henry.model.Course3" resultMap="getCourse3ByIDTwoStepMap">
+        SELECT
+            c.id,
+            c.name,
+            c.intro,
+            c.create_at,
+            c.update_at
+        FROM ssm.courses AS c
+        WHERE c.id = #{id}
+    </select>
+
 </mapper>

@@ -8,4 +8,17 @@
         INSERT INTO ssm.plans (course_id, name, create_at, update_at)
         VALUES (#{courseID}, #{name}, #{createAt}, #{updateAt});
     </insert>
+
+
+    <!--- getPlansByCourseID api -->
+    <resultMap id="getPlansByCourseIDMap" type="com.henry.model.Plan">
+        <id property="id" column="id" />
+        <result property="courseID" column="course_id"/>
+        <result property="name" column="name"/>
+        <result property="createAt" column="create_at"/>
+        <result property="updateAt" column="update_at"/>
+    </resultMap>
+    <select id="getPlansByCourseID" parameterType="int" resultType="com.henry.model.Plan" resultMap="getPlansByCourseIDMap">
+        SELECT * FROM ssm.plans WHERE course_id = #{courseID}
+    </select>
 </mapper>

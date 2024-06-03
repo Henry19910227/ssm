@@ -1,10 +1,9 @@
-import com.henry.model.Course;
-import com.henry.model.Course2;
-import com.henry.model.Course3;
-import com.henry.model.User;
+import com.henry.model.*;
 import com.henry.utils.DateUtil;
 import com.henry.utils.SqlUtil;
 import org.junit.Test;
+
+import java.util.List;
 
 public class CourseTest {
     @Test
@@ -34,6 +33,14 @@ public class CourseTest {
         SqlUtil sql = new SqlUtil("mybatis-config.xml");
         Course3 course = sql.GetCourseMapper().getCourse3ByID(1);
         System.out.println(course.toString());
+        sql.close();
+    }
+
+    @Test
+    public void TestGetCourse3ByIDTwoStep() {
+        SqlUtil sql = new SqlUtil("mybatis-config.xml");
+        Course3 course = sql.GetCourseMapper().getCourse3ByIDTwoStep(1);
+        System.out.println(course);
         sql.close();
     }
 }
