@@ -1,7 +1,10 @@
+import com.henry.model.CourseMapper;
 import com.henry.model.User;
 import com.henry.model.UserMapper;
 import com.henry.utils.DateUtil;
+import com.henry.utils.Session;
 import com.henry.utils.SqlUtil;
+import org.apache.ibatis.session.SqlSession;
 import org.junit.Test;
 
 import java.text.DateFormat;
@@ -15,62 +18,87 @@ public class UserTest {
     @Test
     public void TestGetUserByID() {
         SqlUtil sql = new SqlUtil("mybatis-config.xml");
-        User user = sql.GetUserMapper().getUserByID(1);
+
+        Session session1 = sql.getSession("TestGetUserByID-1");
+        User user = session1.userMapper().getUserByID(1);
         System.out.println(user.toString());
-        sql.close();
+        User user1 = session1.userMapper().getUserByID(1);
+        System.out.println(user1.toString());
+        sql.close(session1);
+
+        Session session2 = sql.getSession("TestGetUserByID-2");
+        User user2 = session2.userMapper().getUserByID(1);
+        System.out.println(user2.toString());
+        sql.close(session2);
     }
     @Test
     public void TestInsertUser() {
         SqlUtil sql = new SqlUtil("mybatis-config.xml");
+        Session session = sql.getSession("TestInsertUser");
+
         User user = new User();
-        user.setEmail("user1@gmail.com");
-        user.setNickname("user1");
+        user.setEmail("user2@gmail.com");
+        user.setNickname("user2");
         user.setCreateAt(DateUtil.currentTime());
         user.setUpdateAt(DateUtil.currentTime());
-        sql.GetUserMapper().insertUser(user);
+        session.userMapper().insertUser(user);
         System.out.println(user);
-        sql.close();
+        sql.close(session);
     }
 
     @Test
     public void TestUpdateUser() {
         SqlUtil sql = new SqlUtil("mybatis-config.xml");
-        UserMapper mapper = sql.GetUserMapper();
-        User user = mapper.getUserByID(2);
+        Session session = sql.getSession("TestUpdateUser");
+
+        User user = session.userMapper().getUserByID(2);
         user.setNickname("test9");
         user.setUpdateAt(DateUtil.currentTime());
-        sql.GetUserMapper().updateUser(user);
-        sql.close();
+        session.userMapper().updateUser(user);
+
+        sql.close(session);
     }
 
     @Test
     public void TestDeleteUser() {
         SqlUtil sql = new SqlUtil("mybatis-config.xml");
-        sql.GetUserMapper().deleteUser(14);
-        sql.close();
+        Session session = sql.getSession("TestDeleteUser");
+
+        session.userMapper().deleteUser(14);
+
+        sql.close(session);
     }
 
     @Test
     public void TestGetUsersByAge() {
         SqlUtil sql = new SqlUtil("mybatis-config.xml");
-        List<User> users = sql.GetUserMapper().getUsersByAge(15);
+        Session session = sql.getSession("TestGetUsersByAge");
+
+        List<User> users = session.userMapper().getUsersByAge(15);
         System.out.println(users);
-        sql.close();
+
+        sql.close(session);
     }
 
     @Test
     public void TestGetUsersByUsername() {
         SqlUtil sql = new SqlUtil("mybatis-config.xml");
-        List<User> users = sql.GetUserMapper().getUsersByUsername("use");
+        Session session = sql.getSession("TestGetUsersByUsername");
+
+        List<User> users = session.userMapper().getUsersByUsername("use");
         System.out.println(users);
-        sql.close();
+
+        sql.close(session);
     }
 
     @Test
     public void TestGetUsersByEmail() {
         SqlUtil sql = new SqlUtil("mybatis-config.xml");
-        List<User> users = sql.GetUserMapper().getUsersByEmail("tes");
+        Session session = sql.getSession("TestGetUsersByEmail");
+
+        List<User> users = session.userMapper().getUsersByEmail("tes");
         System.out.println(users);
-        sql.close();
+
+        sql.close(session);
     }
 }

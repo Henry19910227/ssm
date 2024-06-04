@@ -1,40 +1,42 @@
 package com.henry.utils;
 
-import com.henry.model.CourseMapper;
-import com.henry.model.UserMapper;
-import com.henry.model.PlanMapper;
 import org.apache.ibatis.io.Resources;
 import org.apache.ibatis.session.SqlSession;
+import org.apache.ibatis.session.SqlSessionFactory;
 import org.apache.ibatis.session.SqlSessionFactoryBuilder;
 
 import java.io.IOException;
 import java.io.InputStream;
+import java.util.HashMap;
 
 public class SqlUtil {
-    private SqlSession sqlSession;
+    private InputStream stream;
+    private SqlSessionFactory factory;
+
+    private HashMap<String, Session> sessionMap;
+
     public SqlUtil(String xml) {
         try {
-            InputStream stream = Resources.getResourceAsStream(xml);
-            SqlSessionFactoryBuilder builder = new SqlSessionFactoryBuilder();
-            sqlSession = builder.build(stream).openSession(true); //autocommit = true
+            stream = Resources.getResourceAsStream(xml);
+            factory = new SqlSessionFactoryBuilder().build(stream);
+            sessionMap = new HashMap<>();
         } catch (IOException e) {
             System.out.println(e);
         }
     }
 
-    public UserMapper GetUserMapper() {
-        return sqlSession.getMapper(UserMapper.class);
+    public Session getSession(String sessionID) {
+        Session session = sessionMap.get(sessionID);
+        if (session == null) {
+            session = new Session(sessionID, factory.openSession(true));
+            sessionMap.put(sessionID, session);
+            return session;
+        }
+        return session;
     }
 
-    public CourseMapper GetCourseMapper() {
-        return sqlSession.getMapper(CourseMapper.class);
-    }
-
-    public PlanMapper planMapper() {
-        return sqlSession.getMapper(PlanMapper.class);
-    }
-
-    public void close() {
-        sqlSession.close();
+    public void close(Session session) {
+        session.close();
+        sessionMap.remove(session.getSessionID());
     }
 }
