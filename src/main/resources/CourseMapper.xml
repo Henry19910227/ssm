@@ -4,6 +4,7 @@
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.henry.model.CourseMapper">
 
+    <cache/>
 
     <!--- insertCourse api -->
     <insert id="insertCourse" parameterType="com.henry.model.Course" useGeneratedKeys="true" keyProperty="id">

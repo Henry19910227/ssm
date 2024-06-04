@@ -1,6 +1,8 @@
 package com.henry.model;
 
-public class Course {
+import java.io.Serializable;
+
+public class Course implements Serializable {
       private int id;
       private int userID;
       private String name;
