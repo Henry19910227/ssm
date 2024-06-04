@@ -21,13 +21,19 @@
 
     <!--- getUsersByUsername api -->
     <select id="getUsersByUsername" parameterType="string" resultType="com.henry.model.User">
-        SELECT * FROM ssm.user WHERE username LIKE CONCAT('%', #{username}, '%')
+        SELECT * FROM ssm.users WHERE username LIKE CONCAT('%', #{username}, '%')
     </select>
 
 
     <!--- getUsersByEmail api -->
     <select id="getUsersByEmail" parameterType="string" resultType="com.henry.model.User">
-        SELECT * FROM ssm.user WHERE email LIKE '%${email}%'
+        SELECT * FROM ssm.users WHERE email LIKE '%${email}%'
+    </select>
+
+
+    <!--- getAllUsers api -->
+    <select id="getAllUsers" resultType="com.henry.model.User">
+        SELECT * FROM ssm.users
     </select>
 
 

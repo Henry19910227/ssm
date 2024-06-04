@@ -14,6 +14,8 @@ public interface UserMapper {
 
     void deleteUser(int id);
 
+    List<User> getAllUsers();
+
     @Select("SELECT * FROM ssm.user WHERE age = #{age}")
     List<User> getUsersByAge(@Param("age") int age);
 

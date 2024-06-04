@@ -1,3 +1,5 @@
+import com.github.pagehelper.Page;
+import com.github.pagehelper.PageHelper;
 import com.henry.model.CourseMapper;
 import com.henry.model.User;
 import com.henry.model.UserMapper;
@@ -31,14 +33,27 @@ public class UserTest {
         System.out.println(user2.toString());
         sql.close(session2);
     }
+
+    @Test
+    public void TestPaging() {
+        SqlUtil sql = new SqlUtil("mybatis-config.xml");
+
+        Session session1 = sql.getSession("TestPaging");
+        Page<User> page = PageHelper.startPage(1, 2);
+        List<User> users = session1.userMapper().getAllUsers();
+        System.out.println(users);
+        System.out.println("page = "+page.getPages());
+        System.out.println("total = "+page.getTotal());
+    }
+
     @Test
     public void TestInsertUser() {
         SqlUtil sql = new SqlUtil("mybatis-config.xml");
         Session session = sql.getSession("TestInsertUser");
 
         User user = new User();
-        user.setEmail("user2@gmail.com");
-        user.setNickname("user2");
+        user.setEmail("user5@gmail.com");
+        user.setNickname("user5");
         user.setCreateAt(DateUtil.currentTime());
         user.setUpdateAt(DateUtil.currentTime());
         session.userMapper().insertUser(user);
