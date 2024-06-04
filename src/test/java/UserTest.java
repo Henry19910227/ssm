@@ -1,5 +1,6 @@
 import com.github.pagehelper.Page;
 import com.github.pagehelper.PageHelper;
+import com.henry.controller.UserController;
 import com.henry.model.CourseMapper;
 import com.henry.model.User;
 import com.henry.model.UserMapper;
@@ -8,6 +9,8 @@ import com.henry.utils.Session;
 import com.henry.utils.SqlUtil;
 import org.apache.ibatis.session.SqlSession;
 import org.junit.Test;
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
@@ -115,5 +118,12 @@ public class UserTest {
         System.out.println(users);
 
         sql.close(session);
+    }
+
+    @Test
+    public void TestIoc() {
+        ApplicationContext ioc = new ClassPathXmlApplicationContext("applicationContext.xml");
+        User user = ioc.getBean(User.class);
+        System.out.println(user);
     }
 }

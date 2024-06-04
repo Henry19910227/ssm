@@ -66,4 +66,8 @@ public class User implements Serializable {
                 ", updateAt='" + updateAt + '\'' +
                 '}';
     }
+
+    public void init() {
+        System.out.println("User Init");
+    }
 }

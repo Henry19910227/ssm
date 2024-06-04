@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/context https://www.springframework.org/schema/context/spring-context.xsd">
+
+<!--    <bean id="user" class="com.henry.model.User">-->
+<!--        <property name="id" value="1000"/>-->
+<!--        <property name="email" value="test@gmail.com"/>-->
+<!--        <property name="nickname" value="henry"/>-->
+<!--        <property name="createAt" value="2024-06-05 12:00:00"/>-->
+<!--        <property name="updateAt" value="2024-06-05 12:00:00"/>-->
+<!--    </bean>-->
+
+<!--    <bean id="user" class="com.henry.model.User" init-method="init">-->
+<!--        <constructor-arg name="id" value="1000"/>-->
+<!--        <constructor-arg name="email" value="test@gmail.com"/>-->
+<!--        <constructor-arg name="nickname" value="henry"/>-->
+<!--        <constructor-arg name="createAt" value="2024-06-05 12:00:00"/>-->
+<!--        <constructor-arg name="updateAt" value="2024-06-05 12:00:00"/>-->
+<!--    </bean>-->
+
+<!--    <bean id="course2" class="com.henry.model.Course2" autowire="byName">-->
+<!--        <property name="id" value="1000"/>-->
+<!--        <property name="intro" value="1000"/>-->
+<!--        <property name="name" value="1000"/>-->
+<!--        <property name="createAt" value="2024-06-05 12:00:00"/>-->
+<!--        <property name="updateAt" value="2024-06-05 12:00:00"/>-->
+<!--    </bean>-->
+
+    <context:component-scan base-package="com.henry"/>
+
+</beans>

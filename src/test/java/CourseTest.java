@@ -4,6 +4,8 @@ import com.henry.utils.Session;
 import com.henry.utils.SqlUtil;
 import org.apache.ibatis.session.SqlSession;
 import org.junit.Test;
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 import java.util.List;
 
@@ -56,5 +58,12 @@ public class CourseTest {
         System.out.println(course);
 
         sql.close(session);
+    }
+
+    @Test
+    public void TestIoc() {
+        ApplicationContext ioc = new ClassPathXmlApplicationContext("applicationContext.xml");
+        Course2 course = ioc.getBean(Course2.class);
+        System.out.println(course);
     }
 }

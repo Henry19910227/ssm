@@ -25,6 +25,10 @@ public class SqlUtil {
         }
     }
 
+    public SqlUtil() {
+
+    }
+
     public Session getSession(String sessionID) {
         Session session = sessionMap.get(sessionID);
         if (session == null) {
