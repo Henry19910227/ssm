@@ -20,7 +20,7 @@
         <result property="intro" column="intro"/>
         <result property="createAt" column="create_at"/>
         <result property="updateAt" column="update_at"/>
-        <association property="user" javaType="com.henry.model.User">
+        <association property="user" javaType="com.henry.model.com.henry.model.User">
             <id property="id" column="user_id" />
             <result property="email" column="user_email"/>
             <result property="nickname" column="user_nickname"/>

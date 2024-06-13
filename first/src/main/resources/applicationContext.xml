@@ -5,7 +5,7 @@
        xmlns:aop="http://www.springframework.org/schema/aop" xmlns:tx="http://www.springframework.org/schema/tx"
        xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/context https://www.springframework.org/schema/context/spring-context.xsd http://www.springframework.org/schema/aop https://www.springframework.org/schema/aop/spring-aop.xsd http://www.springframework.org/schema/cache http://www.springframework.org/schema/cache/spring-cache.xsd">
 
-<!--    <bean id="user" class="com.henry.model.User">-->
+<!--    <bean id="user" class="com.henry.model.com.henry.model.User">-->
 <!--        <property name="id" value="1000"/>-->
 <!--        <property name="email" value="test@gmail.com"/>-->
 <!--        <property name="nickname" value="henry"/>-->
@@ -13,7 +13,7 @@
 <!--        <property name="updateAt" value="2024-06-05 12:00:00"/>-->
 <!--    </bean>-->
 
-<!--    <bean id="user" class="com.henry.model.User" init-method="init">-->
+<!--    <bean id="user" class="com.henry.model.com.henry.model.User" init-method="init">-->
 <!--        <constructor-arg name="id" value="1000"/>-->
 <!--        <constructor-arg name="email" value="test@gmail.com"/>-->
 <!--        <constructor-arg name="nickname" value="henry"/>-->

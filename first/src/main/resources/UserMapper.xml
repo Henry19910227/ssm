@@ -7,45 +7,45 @@
     <cache/>
 
     <!--- getUserByID api -->
-    <resultMap id="userResultMap" type="com.henry.model.User">
+    <resultMap id="userResultMap" type="com.henry.model.com.henry.model.User">
         <id property="id" column="id" />
         <result property="email" column="email"/>
         <result property="nickname" column="nickname"/>
         <result property="createAt" column="create_at"/>
         <result property="updateAt" column="update_at"/>
     </resultMap>
-    <select id="getUserByID" parameterType="int" resultType="com.henry.model.User" resultMap="userResultMap">
+    <select id="getUserByID" parameterType="int" resultType="com.henry.model.com.henry.model.User" resultMap="userResultMap">
         SELECT * FROM ssm.users WHERE id = #{id}
     </select>
 
 
     <!--- getUsersByUsername api -->
-    <select id="getUsersByUsername" parameterType="string" resultType="com.henry.model.User">
+    <select id="getUsersByUsername" parameterType="string" resultType="com.henry.model.com.henry.model.User">
         SELECT * FROM ssm.users WHERE username LIKE CONCAT('%', #{username}, '%')
     </select>
 
 
     <!--- getUsersByEmail api -->
-    <select id="getUsersByEmail" parameterType="string" resultType="com.henry.model.User">
+    <select id="getUsersByEmail" parameterType="string" resultType="com.henry.model.com.henry.model.User">
         SELECT * FROM ssm.users WHERE email LIKE '%${email}%'
     </select>
 
 
     <!--- getAllUsers api -->
-    <select id="getAllUsers" resultType="com.henry.model.User">
+    <select id="getAllUsers" resultType="com.henry.model.com.henry.model.User">
         SELECT * FROM ssm.users
     </select>
 
 
     <!--- insertUser api -->
-    <insert id="insertUser" parameterType="com.henry.model.User" useGeneratedKeys="true" keyProperty="id">
+    <insert id="insertUser" parameterType="com.henry.model.com.henry.model.User" useGeneratedKeys="true" keyProperty="id">
         INSERT INTO ssm.users (email, nickname, create_at, update_at)
         VALUES (#{email}, #{nickname}, #{createAt}, #{updateAt});
     </insert>
 
 
     <!--- updateUser api -->
-    <update id="updateUser" parameterType="com.henry.model.User">
+    <update id="updateUser" parameterType="com.henry.model.com.henry.model.User">
         UPDATE ssm.users SET
               email = #{email},
               nickname = #{nickname},

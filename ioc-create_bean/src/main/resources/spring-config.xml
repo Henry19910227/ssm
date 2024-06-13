@@ -3,7 +3,7 @@
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
        xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
 
-    <bean id="user" class="com.henry.model.User"/>
+    <bean id="user" class="com.henry.model.com.henry.model.User"/>
 
     <bean id="user2" class="com.henry.model.User2" factory-method="createUser"/>
 
