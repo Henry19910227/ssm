@@ -11,6 +11,7 @@
     <modules>
         <module>ioc-create_bean</module>
         <module>first</module>
+        <module>ioc-di</module>
     </modules>
     <packaging>pom</packaging>
 

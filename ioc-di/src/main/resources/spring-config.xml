@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <bean id="user" class="com.henry.model.User">
+        <constructor-arg name="id" value="1000"/>
+        <constructor-arg name="email" value="test@gmail.com"/>
+        <constructor-arg name="nickname" value="henry"/>
+        <constructor-arg name="createAt" value="2024-06-05 12:00:00"/>
+        <constructor-arg name="updateAt" value="2024-06-05 12:00:00"/>
+        <constructor-arg name="userInfo" ref="userInfo"/>
+    </bean>
+
+    <bean id="user2" class="com.henry.model.User2">
+        <property name="id" value="1000"/>
+        <property name="email" value="test@gmail.com"/>
+        <property name="nickname" value="henry"/>
+        <property name="createAt" value="2024-06-05 12:00:00"/>
+        <property name="updateAt" value="2024-06-05 12:00:00"/>
+        <property name="userInfo" ref="userInfo"/>
+    </bean>
+
+    <bean id="user3" class="com.henry.model.User3">
+        <property name="id" value="1000"/>
+        <property name="email" value="test@gmail.com"/>
+        <property name="nickname" value="henry"/>
+        <property name="createAt" value="2024-06-05 12:00:00"/>
+        <property name="updateAt" value="2024-06-05 12:00:00"/>
+        <property name="userInfo" ref="userInfoStaticFactory"/>
+    </bean>
+
+    <bean id="user4" class="com.henry.model.User4">
+        <property name="id" value="1000"/>
+        <property name="email" value="test@gmail.com"/>
+        <property name="nickname" value="henry"/>
+        <property name="createAt" value="2024-06-05 12:00:00"/>
+        <property name="updateAt" value="2024-06-05 12:00:00"/>
+        <property name="userInfo" ref="userInfoDynamicFactory"/>
+    </bean>
+
+    <bean id="userInfo" class="com.henry.model.UserInfo">
+        <constructor-arg name="userId" value="1000"/>
+        <constructor-arg name="address" value="新北市"/>
+        <constructor-arg name="phone" value="09000000000"/>
+    </bean>
+
+    <bean id="userInfoStaticFactory" class="com.henry.model.UserInfoStaticFactory" factory-method="getUserInfo"/>
+
+    <bean id="userInfoFactory" class="com.henry.model.UserInfoDynamicFactory"/>
+    <bean id="userInfoDynamicFactory" factory-bean="userInfoFactory" factory-method="getUserInfo"/>
+
+</beans>
