@@ -14,6 +14,7 @@
         <module>ioc-di</module>
         <module>ioc-lifecycle</module>
         <module>ioc-bean_scope</module>
+        <module>ioc-creat_bean_annotation</module>
     </modules>
     <packaging>pom</packaging>
 
