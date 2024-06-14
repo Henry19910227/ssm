@@ -13,6 +13,7 @@
         <module>first</module>
         <module>ioc-di</module>
         <module>ioc-lifecycle</module>
+        <module>ioc-bean_scope</module>
     </modules>
     <packaging>pom</packaging>
 
