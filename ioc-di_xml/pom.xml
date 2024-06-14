@@ -10,7 +10,8 @@
     </parent>
 
     <groupId>org.example</groupId>
-    <artifactId>ioc-lifecycle</artifactId>
+    <artifactId>ioc-di_xml</artifactId>
+
 
     <properties>
         <maven.compiler.source>21</maven.compiler.source>

@@ -9,11 +9,11 @@
     <version>1.0-SNAPSHOT</version>
     <name>ssm</name>
     <modules>
-        <module>ioc-create_bean</module>
+        <module>ioc-create_bean_xml</module>
         <module>first</module>
-        <module>ioc-di</module>
-        <module>ioc-lifecycle</module>
-        <module>ioc-bean_scope</module>
+        <module>ioc-di_xml</module>
+        <module>ioc-lifecycle_xml</module>
+        <module>ioc-bean_scope_xml</module>
         <module>ioc-creat_bean_annotation</module>
     </modules>
     <packaging>pom</packaging>
