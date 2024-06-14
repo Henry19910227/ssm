@@ -18,6 +18,7 @@
         <module>ioc-lifecycle_annotation</module>
         <module>ioc-bean_scope_annotation</module>
         <module>ioc-di_annotation</module>
+        <module>ioc-configuration_annotation</module>
     </modules>
     <packaging>pom</packaging>
 
