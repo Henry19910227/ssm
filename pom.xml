@@ -21,6 +21,7 @@
         <module>ioc-configuration_annotation</module>
         <module>aop</module>
         <module>transaction</module>
+        <module>transaction-propagation</module>
     </modules>
     <packaging>pom</packaging>
 
