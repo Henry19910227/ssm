@@ -2,10 +2,14 @@ package com.henry.controller;
 
 import com.henry.model.User;
 import org.springframework.stereotype.Controller;
+import org.springframework.validation.BindingResult;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 @RestController // 添加 RestController 等於 @Controller + @ResponseBody
 @RequestMapping("user")
@@ -35,7 +39,13 @@ public class UserController {
     }
 
     @PostMapping("/addUser")
-    public String addUser(@RequestBody User user) {
+    public Object addUser(@RequestBody @Validated User user, BindingResult result) {
+        if (result.hasErrors()) {
+            Map<String, Object> data = new HashMap<>();
+            data.put("code", 400);
+            data.put("msd", result.getObjectName());
+            return data;
+        }
         System.out.println(user);
         return "success!";
     }

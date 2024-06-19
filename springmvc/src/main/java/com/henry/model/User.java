@@ -1,9 +1,12 @@
 package com.henry.model;
 
 
+import org.hibernate.validator.constraints.Length;
+
 public class User {
     private Integer id;
     private String email;
+    @Length(min = 1, max = 10)
     private String nickname;
 
     public User(Integer id, String email, String nickname) {
